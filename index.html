@@ -1,25 +1,156 @@
+<!-- texto -->
+
 <!DOCTYPE html>
-<html lang="pt-br"> <!-- Idioma-->
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifólio</title> <!-- Titulo -->                                <!-- strong = TEXTO importante, sério ou urgente. -->
-    <link rel="stylesheet" href="style.css">
+    <title>Portfólio - Joana Santos</title>
+
+    <style>
+        /* IMPORT DA FONTE ALICE: Traz a nova tipografia elegante do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+        * {
+            margin: 0; padding: 0;                   /* Remove margens e espaçamentos padrão do navegador */
+            box-sizing: border-box;                  /* Garante que bordas não quebrem o tamanho dos elementos */
+        }
+
+        body {
+            background-color: #149c76;               /* Mantém o seu fundo verde esmeralda escuro */
+            color: #FFFFFF;                          /* Define a cor padrão dos textos como branco */
+            min-height: 100vh;                       /* Força o corpo da página a ocupar toda a altura da tela */
+            display: flex;                           /* Ativa o Flexbox para alinhar o conteúdo na tela */
+            justify-content: flex-start;             /* TELA -> Alinha e empurra todo o conteúdo para a esquerda */
+            align-items: flex-start;                 /* TELA -> Alinha e empurra todo o conteúdo para o topo superior */
+            padding: 60px 10% 40px 10%;              /* Margem elegante nas bordas para o texto não ficar colado na tela */
+            font-family: 'Alice', serif;             /* APLICA A FONTE ALICE: Define a nova fonte como padrão do site */
+        }
+
+        .container {
+            display: flex;                           
+            flex-direction: column;                  /* Força o texto a ficar em cima e a imagem embaixo */
+            width: 100%;                             
+            align-items: flex-start;                 /* CONTEÚDO -> Garante que tudo comece alinhado à esquerda */
+            gap: 40px;                               /* Espaçamento vertical entre o bloco de texto e a imagem abaixo */
+        }
+
+        .conteudo {
+            width: 100%;                             /* O bloco de texto ocupa toda a largura disponível do container */
+            text-align: left;                        /* TEXTO -> Garante os textos alinhados para o lado esquerdo */
+        }
+
+        .titulo {
+            font-family: 'Alice', serif;             /* Garante o uso da fonte Alice com suas serifas desenhadas */
+            font-size: 3.2rem;                       /* Aumentado levemente pois fontes serifadas pedem mais destaque */
+            font-weight: 400;                        /* A fonte Alice brilha muito em seu peso padrão (regular) */
+            line-height: 1.2;                        /* Ajusta o espaçamento para o título grande não separar muito */
+            margin-bottom: 32px;                     /* Empurra a descrição bem para baixo, isolando o título no topo */
+            letter-spacing: 0.5px;                   /* Um pequeno espaçamento entre letras para combinar com o estilo */
+        }
+
+        .destaque-azul {
+            color: #A3FFE6;                          /* Tom verde menta bem claro para dar contraste no título */
+        }
+
+        .descricao {
+            font-family: 'Alice', serif;             /* Aplica a fonte Alice também na descrição para uniformidade */
+            color: #E2FFF7;                          /* Tom do texto de descrição (branco levemente esverdeado) */
+            font-size: 1.1rem;                       /* Ajustado para melhor leitura com a nova fonte */
+            line-height: 1.6;                        /* Espaçamento de linha ideal para blocos de texto */
+            margin-bottom: 32px;                     /* Empurra o bloco de botões para baixo */
+        }
+
+        .botoes-container {
+            display: flex;                           /* Coloca os dois botões lado a lado */
+            gap: 16px;                               /* Distância exata entre o botão Instagram e GitHub */
+            max-width: 400px;                        /* Limita a largura dos botões para não ficarem gigantes */
+            width: 100%;                             
+        }
+
+        .botao {
+            font-family: 'Alice', serif;             /* Aplica a estética da fonte Alice dentro dos botões */
+            flex: 1;                                 /* Faz ambos os botões terem exatamente o mesmo tamanho */
+            text-align: center;                      /* Centraliza o texto escrito dentro deles */
+            background-color: #A3FFE6;               /* Cor de fundo ciano/menta vibrante */
+            color: #0A4735;                          /* Texto interno escrito em verde escuro para contraste */
+            text-decoration: none;                   /* Remove o sublinhado padrão de links do HTML */
+            font-size: 1.05rem;                      /* Tamanho do texto interno do botão */
+            padding: 12px 24px;                      /* Espaçamento interno (cima/baixo e lados) do botão */
+            border-radius: 8px;                      /* Arredonda levemente os cantos dos botões */
+            transition: all 0.2s ease;               /* Suaviza a animação quando o usuário passa o mouse */
+        }
+
+        .botao:hover {
+            background-color: #76E1C4;               /* Escurece o menta levemente ao passar o mouse */
+            transform: translateY(-2px);             /* Faz o botão subir de leve, dando efeito de clique */
+        }
+
+        .imagem-container {
+            width: 100%;                             
+            display: flex;                           
+            justify-content: flex-start;             /* Alinha a foto também para o lado esquerdo, abaixo do texto */
+        }
+
+        .moldura-foto {
+            position: relative;                      
+            border: 2px solid #A3FFE6;               /* Borda fina em verde menta combinando com os botões */
+            border-radius: 16px;                     /* Arredonda os cantos da borda externa */
+            padding: 10px;                           /* Espaço vazio entre a borda e a foto */
+        }
+
+        .foto-perfil {
+            max-width: 320px;                        /* Limita o tamanho máximo da foto para manter a elegância */
+            width: 100%;                             /* Torna a foto maleável para se adaptar */
+            height: auto;                            /* Mantém a proporção original da foto sem achatar */
+            border-radius: 12px;                     /* Arredonda os cantos da imagem da foto em si */
+            display: block;                          /* Remove espaçamentos fantasmas abaixo da tag img */
+            filter: grayscale(100%);                 /* Mantém o efeito elegante em preto e branco na foto */
+        }
+
+        /* Ajuste específico para celulares */
+        @media (max-width: 480px) {
+            .titulo { font-size: 2.2rem; }           /* Diminui o título ligeiramente em telas de celular */
+            .botoes-container { flex-direction: column; } /* Em celulares, empilha os botões para não espremer */
+        }
+    </style>
 </head>
 <body>
-    <header></header>
-    <main>
-        <h1>Eleve seu negócio digital a outro nível <strong>com um Front-end de qualidade!</strong> </h1>
 
-        <p>Olá! Sou Joana Santos, desenvolvedora Front-end com especialidade em React, HTML e CSS. Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?</p>
+    <main class="container"> <section class="conteudo"> <h1 class="titulo">
+                Eleve Seu Negócio Digital A Outro Nível <span class="destaque-azul">Com Um Front-End De Qualidade!</span>
+            </h1>
+            <p class="descricao">
+                Olá! Sou Joana Santos, desenvolvedora Front-end com especialidade em React, HTML e CSS. 
+                Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?
+            </p>
+            <div class="botoes-container"> <a href="https://instagram.com/joaofernandoflorenciodeborba" id="btn-instagram" class="botao" target="_blank">Instagram</a> 
+                <a href="https://github.com/29122008-joao" id="btn-github" class="botao" target="_blank">GitHub</a> 
+            </div>
+        </section>
 
-        <a href="http://instagram.com/"> Instagram</a>
-        <a href="http://github.com/29122008-joao">Github</a>
+        <section class="imagem-container"> <div class="moldura-foto"> 
+                <img src="Imagem.png" alt="Foto de Joana Santos" class="foto-perfil"> 
+            </div>
+        </section>
 
-        <img src="Imagem.png" alt="">
     </main>
-    <footer></footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => { // Garante que o código só rode após a página carregar
+
+            const btnInstagram = document.getElementById("btn-instagram"); // Captura o elemento onde está escrito Instagram
+            const btnGithub = document.getElementById("btn-github");       // Captura o elemento do botão do GitHub
+
+            btnInstagram.addEventListener("click", () => {
+                console.log("Redirecionando para o seu Instagram...");     /* Mostra no console ao clicar no Instagram */
+            });
+
+            btnGithub.addEventListener("click", () => {
+                console.log("Redirecionando para o seu GitHub...");        /* Mostra no console ao clicar no GitHub */
+            });
+
+        });
+    </script>
 </body>
-</html> 
-<!-- texto -->
+</html>

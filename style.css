@@ -1,6 +1,101 @@
-body {
-    background-color: black; /* Pode usar em inglês */
-    /* ou background-color: #0000FF; / código hexadecimal */
-    /* ou background-color: rgb(0, 0, 255); / código RGB */
+* {
+    margin: 0; padding: 0;                   /* Remove margens e espaçamentos padrão do navegador */
+    box-sizing: border-box;                  /* Garante que bordas não quebrem o tamanho dos elementos */
+    font-family: 'Inter', sans-serif;        /* Define uma fonte moderna e limpa para o projeto */
 }
 
+body {
+    background-color: #000000;               /* Define o fundo como preto puro igual à imagem */
+    color: #FFFFFF;                          /* Define a cor padrão dos textos como branco */
+    min-height: 100vh;                       /* Força o corpo da página a ocupar toda a altura da tela */
+    display: flex;                           /* Ativa o Flexbox para alinhar o conteúdo */
+    justify-content: center;                 /* Centraliza o bloco de conteúdo horizontalmente */
+    align-items: center;                     /* Centraliza o bloco de conteúdo verticalmente */
+    padding: 20px;                           /* Margem de segurança interna para telas menores */
+}
+
+.container {
+    display: flex;                           /* Alinha a coluna de texto e a coluna da foto lado a lado */
+    max-width: 1100px;                       /* Limita a largura máxima para não esticar em monitores gigantes */
+    width: 100%;                             /* Permite que o container seja responsivo e encolha se necessário */
+    justify-content: space-between;          /* Empurra o texto para a esquerda e a foto para a direita */
+    align-items: center;                     /* Alinha o texto e a foto perfeitamente pelo centro vertical */
+    gap: 40px;                               /* Espaçamento de separação entre o texto e a foto */
+}
+
+.conteudo {
+    flex: 1;                                 /* Faz o bloco de texto crescer proporcionalmente */
+    max-width: 550px;                        /* Evita que as linhas de texto fiquem longas e cansativas de ler */
+}
+
+.titulo {
+    font-size: 2.2rem;                       /* Define um tamanho de destaque para o título principal */
+    font-weight: 700;                        /* Deixa a fonte em negrito bem marcado */
+    line-height: 1.3;                        /* Ajusta o espaçamento entre as linhas do título */
+    margin-bottom: 24px;                     /* Empurra a descrição para baixo */
+}
+
+.destaque-azul {
+    color: #26D4FF;                          /* Tom de ciano/azul neon idêntico ao do layout apresentado */
+}
+
+.descricao {
+    color: #C0C0C0;                          /* Tom cinza claro para criar hierarquia visual com o título */
+    font-size: 1rem;                         /* Tamanho padrão confortável para leitura de parágrafos */
+    line-height: 1.6;                        /* Espaçamento de linha ideal para blocos de texto */
+    margin-bottom: 32px;                     /* Empurra o bloco de botões para baixo */
+}
+
+.botoes-container {
+    display: flex;                           /* Coloca os dois botões lado a lado */
+    gap: 16px;                               /* Distância exata entre o botão Instagram e GitHub */
+}
+
+.botao {
+    flex: 1;                                 /* Faz ambos os botões terem exatamente o mesmo tamanho */
+    text-align: center;                      /* Centraliza o texto "Instagram" e "GitHub" dentro deles */
+    background-color: #26D4FF;               /* Cor de fundo ciano dos botões */
+    color: #000000;                          /* Texto interno do botão em preto para alto contraste */
+    text-decoration: none;                   /* Remove o sublinhado padrão de links do HTML */
+    font-weight: 600;                        /* Deixa o texto do botão levemente mais grosso */
+    padding: 12px 24px;                      /* Espaçamento interno (cima/baixo e lados) do botão */
+    border-radius: 8px;                      /* Arredonda levemente os cantos dos botões */
+    transition: all 0.2s ease;               /* Suaviza a animação quando o usuário passa o mouse */
+}
+
+.botao:hover {
+    background-color: #1aa0c2;               /* Escurece o azul ligeiramente quando passa o mouse */
+    transform: translateY(-2px);             /* Faz o botão subir de leve, dando efeito de clique */
+}
+
+.imagem-container {
+    flex: 1;                                 /* Permite que o bloco da imagem ocupe espaço equivalente */
+    display: flex;                           /* Ativa flexbox interno */
+    justify-content: center;                 /* Garante o alinhamento centralizado da imagem */
+}
+
+.moldura-foto {
+    position: relative;                      /* Base para possíveis elementos decorativos absolutos */
+    border: 2px solid #26D4FF;               /* Cria a borda fina azul em volta da imagem */
+    border-radius: 16px;                     /* Arredonda os cantos da borda externa */
+    padding: 10px;                           /* Espaço vazio entre a borda azul e a foto */
+}
+
+.foto-perfil {
+    max-width: 350px;                        /* Limita o tamanho da foto para combinar com o design */
+    width: 100%;                             /* Torna a foto maleável para telas menores */
+    height: auto;                            /* Mantém a proporção original da foto sem achatar */
+    border-radius: 12px;                     /* Arredonda os cantos da imagem em si */
+    display: block;                          /* Remove espaçamentos fantasmas abaixo da tag img */
+    filter: grayscale(100%);                 /* Aplica o efeito preto e branco idêntico à imagem enviada */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse;      /* Em celulares, joga a foto para cima e o texto para baixo */
+        text-align: center;                  /* Centraliza todos os textos no ambiente mobile */
+    }
+    .botoes-container {
+        flex-direction: column;              /* Em celulares, empilha os botões um em cima do outro */
+    }
+}
